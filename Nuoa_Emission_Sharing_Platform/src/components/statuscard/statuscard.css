@@ -1,0 +1,17 @@
+.button-container {
+    text-align: center;
+    height: 150px;
+    gap: 20px;
+}
+
+.button {
+    border-radius: 12px;
+    border: solid 2px black;
+    background-color: whitegrey;
+    box-shadow: 1px 2px 20px 2px lightgrey;
+}
+
+.button:hover {
+    color: white;
+    background-color: black;
+}
