@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '/src/components/searchbar/searchbar.css';
-import { Auth } from 'aws-amplify';
-import awsConfig from '/src/aws-exports.js';
-import { Amplify } from 'aws-amplify';
 
-Amplify.configure(awsConfig);
+// import { Auth } from 'aws-amplify';
+// import awsConfig from '/src/aws-exports.js';
+// import { Amplify } from 'aws-amplify';
+
+// Amplify.configure(awsConfig);
 
 function Searchbar() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -40,7 +41,7 @@ function Searchbar() {
   const handleLogout = async () => {
     try {
       await Auth.signOut();
-      window.location.href = '/'; // Redirect to the home page or login page after logout
+      window.location.href = 'https://nuoa-platform.auth.ap-southeast-1.amazoncognito.com'; // Redirect to the home page or login page after logout
     } catch (error) {
       console.error('Error signing out: ', error);
     }
