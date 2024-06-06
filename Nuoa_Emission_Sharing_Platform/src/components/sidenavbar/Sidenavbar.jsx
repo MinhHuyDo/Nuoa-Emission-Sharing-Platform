@@ -54,7 +54,7 @@ function Sidenavbar() {
         {/* Sidebar - Brand */}
         <a className="h-20 flex items-center justify-center" href="/">
           <img
-            src="./src/assets/logo/nuoa-logo.jpg"
+            src="/assets/logo/nuoa-logo.jpg"
             alt="Brand Logo"
             className="max-h-full max-w-full object-contain"
           />
