@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '/src/components/searchbar/searchbar.css';
 import { Auth } from 'aws-amplify';
-import awsconfig from '../aws-exports';
+import awsConfig from '/src/aws-exports.js';
 import { Amplify } from 'aws-amplify';
 
-Amplify.configure(awsconfig);
+Amplify.configure(awsConfig);
 
 function Searchbar() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
