@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '/src/components/searchbar/searchbar.css';
+import { Auth } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+import { Amplify } from 'aws-amplify';
+
+Amplify.configure(awsconfig);
 
 function Searchbar() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -31,6 +36,15 @@ function Searchbar() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await Auth.signOut();
+      window.location.href = '/'; // Redirect to the home page or login page after logout
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+  };
 
   return (
     <div className={`fixed top-0 left-72 right-0 h-20 px-4 flex items-center justify-between bg-white border-b border-gray-200 shadow-lg ${isSearchMenuOpen ? 'z-50' : ''}`}>
@@ -84,7 +98,7 @@ function Searchbar() {
                   <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Settings</button>
                 </li>
                 <li>
-                  <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-200" href="https://nuoa-platform.auth.ap-southeast-1.amazoncognito.com" >Logout</button>
+                  <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-200" onClick={handleLogout}>Logout</button>
                 </li>
               </ul>
             </div>
