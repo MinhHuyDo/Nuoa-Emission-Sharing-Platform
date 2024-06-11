@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '/src/components/searchbar/searchbar.css';
 
-function Searchbar() {
+function SearchBar() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
   const userMenuRef = useRef(null);
@@ -97,4 +97,4 @@ function Searchbar() {
   );
 }
 
-export default Searchbar;
+export default SearchBar;

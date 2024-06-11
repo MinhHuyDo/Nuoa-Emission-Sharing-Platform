@@ -2,11 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import { useLocation } from 'react-router-dom';
 
-function Sidenavbar() {
+function SideNavBar() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isSubMenuInitiallyOpen = currentPath === '/my-published-pcfs' || currentPath === '/incoming-requests';
+  const subMenuPaths = [
+    '/my-published-pcfs',
+    '/my-published-pcfs/new-pcf',
+    '/incoming-requests',
+    '/my-published-pcfs/pcf-detail',
+    '/my-published-pcfs/update-pcf'
+  ];
+
+  const isSubMenuInitiallyOpen = subMenuPaths.includes(currentPath);
+
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(isSubMenuInitiallyOpen);
   const [isIconChanged, setIsIconChanged] = useState(isSubMenuInitiallyOpen);
 
@@ -20,7 +29,7 @@ function Sidenavbar() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
-        if (currentPath !== '/my-published-pcfs' && currentPath !== '/incoming-requests') {
+        if (!subMenuPaths.includes(currentPath)) {
           setIsSubMenuOpen(false);
           setIsIconChanged(false);
         }
@@ -34,9 +43,12 @@ function Sidenavbar() {
   }, [currentPath]);
 
   useEffect(() => {
-    if (currentPath === '/my-published-pcfs' || currentPath === '/incoming-requests') {
+    if (subMenuPaths.includes(currentPath)) {
       setIsSubMenuOpen(true);
       setIsIconChanged(true);
+    } else {
+      setIsSubMenuOpen(false);
+      setIsIconChanged(false);
     }
   }, [currentPath]);
 
@@ -44,8 +56,8 @@ function Sidenavbar() {
     return `text-2xl font-medium flex items-center p-2 rounded-lg hover:bg-gray-200 ${currentPath === path ? 'bg-gray-200' : ''}`;
   };
 
-  const getSubNavItemClasses = (path) => {
-    return `text-xl font-medium flex items-center p-2 rounded-lg hover:bg-gray-200 ${currentPath === path ? 'bg-gray-200' : ''}`;
+  const getSubNavItemClasses = (paths) => {
+    return `text-xl font-medium flex items-center p-2 rounded-lg hover:bg-gray-200 ${paths.includes(currentPath) ? 'bg-gray-200' : ''}`;
   };
 
   return (
@@ -72,7 +84,7 @@ function Sidenavbar() {
           {/* Nav Item - My PCFs */}
           <li className="mx-4" ref={subMenuRef}>
             <div
-              className={`text-2xl font-medium flex items-center p-2 rounded-lg hover:bg-gray-200 cursor-pointer ${!isSubMenuOpen && (currentPath === '/my-published-pcfs' || currentPath === '/incoming-requests') ? 'bg-gray-200' : ''}`}
+              className={`text-2xl font-medium flex items-center p-2 rounded-lg hover:bg-gray-200 cursor-pointer`}
               onClick={handleSubMenuToggle}
             >
               <i className={`px-3 w-1/4 ${isIconChanged ? 'fa-regular fa-folder-open' : 'fa-solid fa-folder'}`}></i>
@@ -87,14 +99,19 @@ function Sidenavbar() {
             {isSubMenuOpen && (
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <a className={getSubNavItemClasses('/my-published-pcfs')} href="/my-published-pcfs">
+                  <a className={getSubNavItemClasses([
+                    '/my-published-pcfs',
+                    '/my-published-pcfs/new-pcf',
+                    '/my-published-pcfs/pcf-detail',
+                    '/my-published-pcfs/update-pcf'
+                  ])} href="/my-published-pcfs">
                     <i className="px-4 fa-regular fa-circle fa-2xs w-1/4"></i>
                     <span>My Published PCFs</span>
                   </a>
                 </li>
 
                 <li>
-                  <a className={getSubNavItemClasses('/incoming-requests')} href="/incoming-requests">
+                  <a className={getSubNavItemClasses(['/incoming-requests'])} href="/incoming-requests">
                     <i className="px-4 fa-regular fa-circle fa-2xs w-1/4"></i>
                     <span>Incoming Requests</span>
                   </a>
@@ -116,4 +133,4 @@ function Sidenavbar() {
   );
 }
 
-export default Sidenavbar;
+export default SideNavBar;
