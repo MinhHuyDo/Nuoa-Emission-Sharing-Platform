@@ -1,19 +1,10 @@
 import React from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 
-function PcfDetail() {
-  const pcfDetails = {
-    pcfId: 'abc4',
-    productId: 'product4',
-    productName: 'Car Seat',
-    amount: '100',
-    emissionPerUnit: '5 kg',
-    version: '1',
-    status: 'Active',
-    additionalInfo: [
-      { key: 'Color', value: 'Red' },
-      { key: 'Size', value: 'Medium' },
-    ],
-  };
+function OwnedPcfDetail() {
+  const { id } = useParams();
+  const location = useLocation();
+  const pcfDetails = location.state?.pcfDetails || {};
 
   return (
     <div className="mt-6 mx-4 p-6 bg-white shadow-lg rounded-lg flex-1">
@@ -23,7 +14,7 @@ function PcfDetail() {
       <div className="space-y-4">
         <div className="flex items-center">
           <label className="w-1/3 text-lg font-medium">PCF ID</label>
-          <div className="flex-1 p-3 border border-gray-300 rounded">{pcfDetails.pcfId}</div>
+          <div className="flex-1 p-3 border border-gray-300 rounded">{pcfDetails.id}</div>
         </div>
         <div className="flex items-center">
           <label className="w-1/3 text-lg font-medium">Product ID</label>
@@ -51,7 +42,7 @@ function PcfDetail() {
         </div>
         <div className="flex flex-col">
           <label className="mb-2 text-lg font-medium">Additional Information</label>
-          {pcfDetails.additionalInfo.map((info, index) => (
+          {pcfDetails.additionalInfo && pcfDetails.additionalInfo.map((info, index) => (
             <div key={index} className="flex items-center mb-2">
               <strong className="w-1/3">{info.key}:</strong>
               <div className="flex-1 p-3 border border-gray-300 rounded">{info.value}</div>
@@ -77,4 +68,4 @@ function PcfDetail() {
   );
 }
 
-export default PcfDetail;
+export default OwnedPcfDetail;

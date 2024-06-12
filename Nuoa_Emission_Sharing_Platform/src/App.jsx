@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './screens/Home.jsx';
-import Browsepcf from './screens/BrowsePcf.jsx';
+import BrowsePcf from './screens/BrowsePcf.jsx';
 import TableMPP from './components/table/table-mpp/TableMPP.jsx';
-import PcfDetail from './components/pcfdetail/PcfDetail.jsx';
+import OwnedPcfDetail from './components/pcfdetail/ownedpcfdetail/OwnedPcfDetail.jsx';
 import UpdatePcfForm from './components/form/updatepcfform/UpdatePcfForm.jsx';
 import NewPcfForm from './components/form/newpcfform/NewPcfForm.jsx';
 import IncomingRequests from './screens/IncomingRequests.jsx';
 import MyPublishedPcfs from './screens/MyPublishedPcfs.jsx';
-
 
 import './index.css';
 
@@ -32,8 +31,8 @@ const router = createBrowserRouter([
         element: <NewPcfForm />,
       },
       {
-        path: 'pcf-detail',
-        element: <PcfDetail />,
+        path: 'pcf-detail/:id',
+        element: <OwnedPcfDetail />,
       },
       {
         path: 'update-pcf',
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/browse-pcfs',
-    element: <Browsepcf />,
+    element: <BrowsePcf />,
   },
 ]);
 
