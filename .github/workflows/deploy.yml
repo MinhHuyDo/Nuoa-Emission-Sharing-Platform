@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Change directory to Nuoa_Emission_Sharing_Platform
+      run: cd ./Nuoa_Emission_Sharing_Platform
+
     - name: Install dependencies
       run: npm install
       working-directory: Nuoa_Emission_Sharing_Platform
