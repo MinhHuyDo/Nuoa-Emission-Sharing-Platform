@@ -21,4 +21,4 @@ function IncomingRequests() {
   );
 }
 
-export default IncomingRequests
+export default IncomingRequests;

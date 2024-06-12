@@ -22,4 +22,4 @@ function Browsepcf() {
   );
 }
 
-export default Browsepcf
+export default Browsepcf;
