@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import SideNavBar from '../components/sidenavbar/SideNavBar.jsx';
-import SearchBar from '../components/searchbar/SearchBar.jsx';
+import SideNavBar from '../components/sidenavbar/SideNavBar';
+import SearchBar from '../components/searchbar/SearchBar';
 
 function MyPublishedPcfs() {
   return (
