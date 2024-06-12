@@ -1,7 +1,7 @@
 import React from 'react';
-import SideNavBar from '../components/sidenavbar/SideNavBar.jsx';
-import SearchBar from '../components/searchbar/SearchBar.jsx';
-import TablePR from '../components/table/table-pr/TablePR.jsx';
+import SideNavBar from '../components/sidenavbar/SideNavBar';
+import SearchBar from '../components/searchbar/SearchBar';
+import TablePR from '../components/table/table-pr/TablePR';
 
 function Home() {
   return (

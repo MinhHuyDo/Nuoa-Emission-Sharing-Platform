@@ -1,6 +1,6 @@
 import React from 'react';
-import SideNavBar from '../components/sidenavbar/SideNavBar.jsx';
-import SearchBar from '../components/searchbar/SearchBar.jsx';
+import SideNavBar from '../components/sidenavbar/SideNavBar';
+import SearchBar from '../components/searchbar/SearchBar';
 
 function IncomingRequests() {
   return(
