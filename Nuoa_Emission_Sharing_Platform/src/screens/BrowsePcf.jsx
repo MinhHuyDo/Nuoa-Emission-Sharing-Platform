@@ -1,7 +1,7 @@
 import React from 'react';
-import SideNavBar from '/src/components/sidenavbar/SideNavBar.jsx';
-import SearchBar from '/src/components/searchbar/SearchBar.jsx';
-import TableAP from '/src/components/table/table-ap/TableAP.jsx';
+import SideNavBar from '../components/sidenavbar/SideNavBar.jsx';
+import SearchBar from '../components/searchbar/SearchBar.jsx';
+import TableAP from '../components/table/table-ap/TableAP.jsx';
 
 function Browsepcf() {
   return(
