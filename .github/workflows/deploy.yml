@@ -17,13 +17,16 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '20'
-
-    - name: Change directory to Nuoa_Emission_Sharing_Platform
-      run: cd ./Nuoa_Emission_Sharing_Platform
+    
+    - name: Clear npm cache
+      run: npm cache clean --force
+      working-directory: Nuoa_Emission_Sharing_Platform
 
     - name: Install dependencies
       run: npm ci
       working-directory: Nuoa_Emission_Sharing_Platform
+
+
 
     - name: Build project
       run: npm run build
